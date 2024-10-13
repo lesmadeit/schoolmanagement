@@ -461,5 +461,15 @@ def admin_view_attendance_view(request,cl):
 
 
 #fees related view for admin
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def admin_fee_view(request):
+    return render(request,'school/admin_fee.html')
 
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def admin_view_fee_view(request,cl):
+    feedetails=models.StudentExtra.objects.all().filter(cl=cl)
+    return render(request,'school/admin_view_fee.html',{'feedetails':feedetails,'cl':cl})
 
