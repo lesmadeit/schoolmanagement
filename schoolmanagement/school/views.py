@@ -473,3 +473,94 @@ def admin_view_fee_view(request,cl):
     feedetails=models.StudentExtra.objects.all().filter(cl=cl)
     return render(request,'school/admin_view_fee.html',{'feedetails':feedetails,'cl':cl})
 
+
+
+
+
+
+
+
+#notice related views
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def admin_notice_view(request):
+    form = forms.NoticeForm()
+    if request.method == 'POST':
+        form = forms.NoticeForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.by = request.user.frst_name
+            form.save()
+            return redirect('admin-dashborad')
+    return render(request, 'school/admin_notice.html', {'form':form})
+
+
+
+
+
+
+
+
+#for teacher login
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_dashboard_view(request):
+    teacherdata = models.TeacherExtra.objects.all().filter(status=True, user_id=request.user.id)
+    notice = models.Notice.objects.all()
+    mydict = {
+        'salary': teacherdata[0].salary,
+        'mobile': teacherdata[0].mobile,
+        'date': teacherdata[0].joindate,
+        'notice': notice
+    }
+    return render(request, 'school/teacher_dashboard.html', context=mydict)
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_attendance_view(request):
+    return render(request, 'school/teacher_attendance.html')
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_take_attendance_view(request, cl):
+    students = models.StudentExtra.objects.all().filter(cl=cl)
+    aform = forms.AttendanceForm()
+    if request.method == 'POST':
+        form = forms.AttendanceForm(request.POST)
+        if form.is_valid():
+            Attendances = request.POST.getlist('present_status')
+            date = form.cleaned_data['date']
+            for i in range(len(Attendances)):
+                AttendanceModel = models.Attendance()
+                AttendanceModel.cl = cl
+                AttendanceModel.date = date
+                AttendanceModel.present_status = Attendances[i]
+                AttendanceModel.roll = students[i].roll
+                AttendanceModel.save()
+            return redirect('teacher-attendance')
+        else:
+            print('form invalid')
+    return render(request, 'school/teacher_take_attendance.html', {'students':students, 'aform':aform})
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_view_attendance_view(request,cl):
+    form = forms.AskDateForm()
+    if request.method=='POST':
+        form = forms.AskDateForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data['date']
+            attendancedata = models.Attendance.objects.all().filter(date=date, cl=cl)
+            studentdata = models.StudentExtra.objects.all().filter(cl=cl)
+            mylist = zip(attendancedata, studentdata)
+            return render(request, 'school/teacher_view_attendance_page.html', {'cl':cl, 'mylist':mylist, 'date':date})
+        else:
+            print('forminvalid')
+    return render(request, 'school/teacher_view_attendance_ask_date.html', {'cl':cl, 'form':form})
+
+
