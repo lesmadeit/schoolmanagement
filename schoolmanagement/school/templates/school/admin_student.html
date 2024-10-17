@@ -1,5 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'school/adminbase.html' %}
+
+
+
+{% block content %}
+
+
 
 <head>
     <meta charset="utf-8">
@@ -8,10 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
     <style type="text/css">
         a:link {
             text-decoration: none;
+        }
+
+        h6 {
+            color: white;
         }
 
         .order-card {
@@ -70,10 +79,12 @@
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Total Teacher</h6>
-                        <h2 class="text-right"><i
-                                class="fas fa-chalkboard-teacher f-left"></i><span>{{teachercount}}</span></h2>
-                        <p class="m-b-0">Pending Teacher<span class="f-right">{{pendingteachercount}}</span></p>
+                        <a href="/admin-view-student">
+                            <h6 class="m-b-20">View All Students</h6>
+                        </a>
+                        <br>
+                        <h2 class="text-right"><i class="fas fa-eye f-left"></i></h2>
+
                     </div>
                 </div>
             </div>
@@ -81,10 +92,11 @@
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Total Student</h6>
-                        <h2 class="text-right"><i class="fas fa-user-graduate f-left"></i><span>{{studentcount}}</span>
-                        </h2>
-                        <p class="m-b-0">Pending Students<span class="f-right">{{pendingstudentcount}}</span></p>
+                        <a href="/admin-add-student">
+                            <h6 class="m-b-20">Add Student</h6>
+                        </a>
+                        <br>
+                        <h2 class="text-right"><i class="fas fa-plus-circle f-left"></i></h2>
                     </div>
                 </div>
             </div>
@@ -92,10 +104,11 @@
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Teachers Salary</h6>
-                        <h2 class="text-right"><i class="fas fa-search-dollar f-left"></i><span>{{teachersalary}}</span>
-                        </h2>
-                        <p class="m-b-0">Pending Salary<span class="f-right">{{pendingteachersalary}}</span></p>
+                        <a href="/admin-approve-student">
+                            <h6 class="m-b-20">Approve Student</h6>
+                        </a>
+                        <br>
+                        <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
                     </div>
                 </div>
             </div>
@@ -103,15 +116,19 @@
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-pink order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Student Fee</h6>
-                        <h2 class="text-right"><i class="fas fa-search-dollar f-left"></i><span>{{studentfee}}</span>
-                        </h2>
-                        <p class="m-b-0">Pending Dues<span class="f-right">{{pendingstudentfee}}</span></p>
+                        <a href="/admin-view-student-fee">
+                            <h6 class="m-b-20">View Student Fee</h6>
+                        </a>
+                        <br>
+                        <h2 class="text-right"><i class="fas fa-rupee-sign f-left"></i></h2>
                     </div>
                 </div>
             </div>
         </div>
+        <br><br><br><br><br><br><br><br>
     </div>
+
+
 
 
 
@@ -121,4 +138,5 @@
     </script>
 </body>
 
-</html>
+
+{% endblock content %}
