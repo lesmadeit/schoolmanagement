@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 
-class TeacherExtra(models.Models):
+class TeacherExtra(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     salary = models.PositiveIntegerField(null=False)
     joindate = models.DateField(auto_now_add=True)

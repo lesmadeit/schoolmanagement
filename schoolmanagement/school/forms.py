@@ -22,7 +22,7 @@ class StudentExtraForm(forms.ModelForm):
 
 
 #teacher
-class TeacherUserForm(forms.modelForm):
+class TeacherUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'password']
