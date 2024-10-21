@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from . import forms, models
 from django.db.models import Sum
 from django.contrib.auth.models import Group
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.conf import settings
 from django.core.mail import send_mail
@@ -49,7 +49,7 @@ def admin_signup_view(request):
 
 
             my_admin_group = Group.objects.get_or_create(name='ADMIN')
-            my_admin_group[0].user_set.ass(user)
+            my_admin_group[0].user_set.add(user)
 
             return HttpResponseRedirect('adminlogin')
     return render(request, 'school/adminsignup.html', {'form':form})
@@ -129,6 +129,8 @@ def afterlogin_view(request):
             return redirect('student-dashboard')
         else:
             return render(request, 'school/student_wait_for_approval.html')
+        
+    
         
 
 
