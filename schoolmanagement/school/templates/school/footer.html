@@ -1,84 +1,98 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
+        
 
+        <!-- Favicons -->
+        <link href="{% static 'school/img/favicon.png' %}" rel="icon">
+        <link href="{% static 'school/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
+        <!--Fonts-->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">-->
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'school/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
 
-
-        <style>
-
-
-            footer {
-                padding: 0px 0px 0px 0px;
-                background-color: black;
-                margin: 0px;
-            }
-
-            .fa {
-                padding: 20px;
-                font-size: 23px;
-                width: 60px;
-                text-align: center;
-                text-decoration: none;
-                margin: 5px 2px;
-                border-radius: 50%;
-            }
-
-            .fa:hover {
-                opacity: 0.5;
-                text-decoration: none;
-            }
-
-            .fa-facebook {
-                background: #3B5998;
-                color: white;
-                margin-top: 30px;
-            }
-
-            .fa-whatsapp {
-                background: #25d366;
-                color: white;
-            }
-
-            .fa-twitter {
-                background: #55ACEE;
-                color: white;
-            }
-
-            .fa-instagram {
-            background: #125688;
-            color: white;
-            }
-
-            p {
-                text-align: center;
-
-            }
-
-        </style>
+        <!-- Main CSS File -->
+        <link href="{% static 'school/css/main.css' %}" rel="stylesheet">
+        
     </head>
 
-    <footer>
+<body>
+    <footer id="footer" class="footer dark-background">
 
-        <p>
-            <a href="https://facebook.com/sumit.luv/" class="fa fa-facebook"></a>
-            <a href="https://instagram.com/sumit.luv" class="fa fa-instagram"></a>
-            <a href="https://twitter.com/sumitkumar1503" class="fa fa-twitter"></a>
-        </p>
-
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
-                        <p>Made in India <br>
-                            Copyright &copy; 2020 LazyCoder </p>
-                    </div>
-                </div>
+        <div class="container footer-top">
+          <div class="row gy-4">
+            <div class="col-lg-4 col-md-6 footer-about">
+              <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <span class="sitename">Elimu School</span>
+              </a>
+              <div class="footer-contact pt-3">
+                <p>Westlands</p>
+                <p>Nairobi</p>
+                <p class="mt-3"><strong>Phone:</strong> <span>+254714442664</span></p>
+                <p><strong>Email:</strong> <span>lesmwendwa@gmail.com</span></p>
+              </div>
+              <div class="social-links d-flex mt-4">
+                <a href="https://www.x.com/lesmadeit"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.facebook.com/youngleslee"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/lesmadeit"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/leslie-mwendwa-82109a22b/"></a><i class="bi bi-linkedin"></i></a>
+              </div>
+              <br>
             </div>
+    
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About us</a></li>
+                <li><a href="{% url 'admin' %}">Admin</a></li>
+                <li><a href="{% url 'teacher' %}">Teacher</a></li>
+                <li><a href="{% url 'student' %}">Student</a></li>
+              </ul>
+            </div>
+    
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">Product Management</a></li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Graphic Design</a></li>
+              </ul>
+            </div>
+    
+          </div>
         </div>
-    </footer>
+    
+      </footer>
+      
+
+<!-- Vendor JS Files -->
+<script src="{% static 'school/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'school/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'school/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'school/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'school/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'school/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'school/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+<script src="{% static 'school/js/main.js' %}"></script>
+
+</body>
+
+
+    
+
+    
 
 </html>

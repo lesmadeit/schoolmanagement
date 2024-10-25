@@ -15,16 +15,18 @@
         .note {
             text-align: center;
             height: 80px;
-            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            background: -webkit-linear-gradient(left, #2b2c2c, #9b9a9c);
             color: #fff;
             font-weight: bold;
             line-height: 80px;
+            border-radius: 10px;
         }
 
         .form-content {
             padding: 5%;
             border: 1px solid #ced4da;
             margin-bottom: 2%;
+            border-radius: 10px;
         }
 
         .form-control {
@@ -37,7 +39,7 @@
             padding: 1%;
             width: 20%;
             cursor: pointer;
-            background: #0062cc;
+            background: #ed502e;;
             color: #fff;
         }
     </style>
@@ -63,6 +65,7 @@
                         <div class="form-group">
                             {% render_field form.date class="form-control" placeholder="Enter date mm/dd/yyyy" %}
                         </div>
+                        <br>
 
                     </div>
 

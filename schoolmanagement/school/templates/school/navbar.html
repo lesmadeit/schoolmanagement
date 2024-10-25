@@ -1,57 +1,81 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        
 
-        <style type="text/css">
-            .bs-example {
-                margin: 0px;
+        <!-- Favicons -->
+        <link href="{% static 'school/img/favicon.png' %}" rel="icon">
+        <link href="{% static 'school/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-            }
+        <!--Fonts-->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">-->
 
-            .navbar-brand {
-            font-size: 20px;
-            font-family: sans-serif;
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'school/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+        <link href="{% static 'school/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
 
-            }
-        </style>
+        <!-- Main CSS File -->
+        <link href="{% static 'school/css/main.css' %}" rel="stylesheet">
+        
     </head>
+    <body class="index-page">
 
-    <body>
+        <header id="header" class="header d-flex align-items-center sticky-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-        <div class="bs-example">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-                <a href="/" class="navbar-brand">School Management</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto"> 
+                    <h1 class="sitename">Elimu School</h1>
+                </a>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="/adminclick" class="nav-item nav-link">Admin</a>
-                        <a href="/teacherclick" class="nav-item nav-link">Teacher</a>
-                        <a href="/studentclick" class="nav-item nav-link">Student</a>
-                    </div>
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                      <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                      <li class="dropdown" ><a href="{% url 'admin' %}"><span>Admin</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                          <li><a href="{% url 'adminsignup' %}">Sign Up</a></li>
+                          <li><a href="{% url 'adminlogin' %}">Log In</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown" ><a href="{% url 'teacher' %}"><span>Teacher</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                          <li><a href="{% url 'teachersignup' %}">Sign Up</a></li>
+                          <li><a href="{% url 'teacherlogin' %}">Log In</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown" ><a href="{% url 'student' %}"><span>Student</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                          <li><a href="{% url 'studentsignup' %}">Sign Up</a></li>
+                          <li><a href="{% url 'studentlogin' %}">Log In</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="{% url 'aboutus' %}" class="{% if request.resolver_match.url_name == 'aboutus' %}active{% endif %}">About Us</a></li>
+                      <li><a href="{% url 'contactus' %}" class="{% if request.resolver_match.url_name == 'contactus' %}active{% endif %}">Contact</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                  </nav>
+            </div>
+            <!-- Scroll Top -->
+            <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            <!-- Preloader -->
+            <div id="preloader"></div>
 
+        </header>
+        <!-- Vendor JS Files -->
+        <script src="{% static 'school/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'school/vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'school/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+        <script src="{% static 'school/vendor/swiper/swiper-bundle.min.js' %}"></script>
+        <script src="{% static 'school/vendor/glightbox/js/glightbox.min.js' %}"></script>
+        <script src="{% static 'school/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'school/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
 
-
-                    <div class="navbar-nav">
-                        <a href="/aboutus" class="nav-item nav-link">About Us</a>
-                        <a href="contactus" class="nav-item nav-link">Contact Us</a>
-                    </div>
-                </div>
-
-            </nav>
-        </div>
+        <!-- Main JS File -->
+        <script src="{% static 'school/js/main.js' %}"></script>
     </body>
-
-
 </html>

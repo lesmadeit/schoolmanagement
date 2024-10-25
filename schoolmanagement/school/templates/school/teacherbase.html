@@ -134,7 +134,6 @@
 
         .content {
             margin-left: 250px;
-            background: url(background.png) no-repeat;
             background-position: center;
             background-size: cover;
             height: 100vh;
@@ -168,7 +167,10 @@
             <h3>School Management</h3>
         </div>
         <div class="right_area">
-            <a href="/logout" class="logout_btn">Logout</a>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout_btn">Logout</button>
+            </form>
         </div>
     </header>
     <!--header area end-->
@@ -176,7 +178,7 @@
     <div class="sidebar">
         <center>
 
-            <img src="{% static 'images/teacher.png' %}" class="profile_image" alt="">
+            <img src="{% static 'school/img/teacher.png' %}" class="profile_image" alt="">
             <h4>{{request.user.first_name}}</h4>
 
         </center>

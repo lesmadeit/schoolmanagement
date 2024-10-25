@@ -66,7 +66,7 @@ def student_signup_view(request):
         form2 = forms.StudentExtraForm(request.POST)
         if form1.is_valid() and form2.is_valid():
             user = form1.save()
-            user.set_password(user.passwords)
+            user.set_password(user.password)
             user.save()
             f2 = form2.save(commit=False)
             f2.user = user
@@ -491,9 +491,9 @@ def admin_notice_view(request):
         form = forms.NoticeForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
-            form.by = request.user.frst_name
+            form.by = request.user.first_name
             form.save()
-            return redirect('admin-dashborad')
+            return redirect('admin-dashboard')
     return render(request, 'school/admin_notice.html', {'form':form})
 
 
@@ -577,7 +577,7 @@ def teacher_notice_view(request):
             form = form.save(commit=False)
             form.by = request.user.first_name
             form.save()
-            return redirect('teacher-dashbroard')
+            return redirect('teacher-dashboard')
         else:
             print('form invalid')
     return render(request, 'school/teacher_notice.html', {'form':form})

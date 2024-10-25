@@ -1,40 +1,28 @@
-<!DOCTYPE html>
+{% extends 'school/homebase.html' %}
+{% load static %}
 
 {% load widget_tweaks %}
-<html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LazyCoder || sumit</title>
+{% block content %}
+
     <style type="text/css">
-        body {
-            color: #aa082e;
-            background-color: #b6bde7;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        a:link {
-            text-decoration: none;
-        }
+        
 
         .note {
             text-align: center;
             height: 80px;
-            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            background: -webkit-linear-gradient(left, #2b2c2c, #9b9a9c);
             color: #fff;
             font-weight: bold;
             line-height: 80px;
+            border-radius: 10px;
         }
 
         .form-content {
             padding: 5%;
             border: 1px solid #ced4da;
             margin-bottom: 2%;
-        }
-
-        .form-control {
-            border-radius: 1.5rem;
+            border-radius: 10px;
         }
 
         .btnSubmit {
@@ -43,25 +31,27 @@
             padding: 1%;
             width: 20%;
             cursor: pointer;
-            background: #0062cc;
+            background: var(--accent-color);
             color: #fff;
-        }
+            
+    }
+
+        
+
+        
     </style>
 
-</head>
+
 
 
 <body>
-    {% include "school/navbar.html" %}
-    <br>
-    <br>
-    <br>
-    <br>
+    
+<br><br><br><br>
 
 
 
 
-    <!--- signup page for teacher by admin(sumit)  ---------->
+    <!--- student signup page ---------->
     <form method="post">
         {% csrf_token %}
         <div class="container register-form">
@@ -75,28 +65,28 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {% render_field form1.first_name class="form-control" placeholder="First Name" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form1.username class="form-control" placeholder="Username" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form2.cl class="form-control" placeholder="Class" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form2.mobile class="form-control" placeholder="Mobile" %}
-                            </div>
+                            </div><br>
 
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {% render_field form1.last_name class="form-control" placeholder="Last Name" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form1.password class="form-control" placeholder="Password" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form2.roll class="form-control" placeholder="Roll" %}
-                            </div>
+                            </div><br>
                             <div class="form-group">
                                 {% render_field form2.fee class="form-control" placeholder="Fee" %}
                             </div>
@@ -111,14 +101,7 @@
 
     </form>
 
-
-
-
-
-
-
-
-    {% include "school/footer.html" %}
 </body>
+<br><br><br>
 
-</html>
+{% endblock content %}
